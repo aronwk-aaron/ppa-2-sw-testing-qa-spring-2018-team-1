@@ -6,7 +6,7 @@ install:
 before_script:
   - git clone https://github.com/drbyron-github-classroom/ppa-2-sw-testing-qa-spring-2018-team-1
 script:
-  - pytest --pyargs app --pylama --cov=app tests/
+  - python3 -m pytest --pyargs app --pylama --cov=app tests/
 after_success:
   - wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
