@@ -1,5 +1,3 @@
-# SUBJECT TO CHANGE
-
 # PPA 2 - Team 1
 
 Software Testing and QA - CSE 4283 - Spring 2018
@@ -10,52 +8,62 @@ Professional Practice Assignment 2 - Team 1
 [![Build Status](https://travis-ci.org/drbyron-github-classroom/ppa-2-sw-testing-qa-spring-2018-team-1.svg?branch=master)](https://travis-ci.org/drbyron-github-classroom/ppa-2-sw-testing-qa-spring-2018-team-1)
 
 ## Getting Started
-We are going to be working with: 
+We are going to be working with:
 
 | Program                                                                     | Version |
 | --------------------------------------------------------------------------- | :-----: |
-| [Windows](https://www.microsoft.com/en-us/software-download/windows10)      | 10      | 
+| [Windows](https://www.microsoft.com/en-us/software-download/windows10)      | 10      |
 | [Python](https://www.python.org/)                                           | 3.6.3   |
 | [virtualenvwrapper-win](https://pypi.python.org/pypi/virtualenvwrapper-win) | 1.2.5   |
 | [pytest](https://docs.pytest.org/en/latest/)                                | 3.4.0   |
+| [pylama](https://github.com/klen/pylama)									  | 7.4.3   |
+| [pytest-cov](https://pypi.python.org/pypi/pytest-cov)						  | 2.5.1   |
+| [python-coveralls](https://pypi.org/project/python-coveralls/)			  | 2.9.1   |
+| [Flask](http://flask.pocoo.org/)											  | 0.12.2  |
+| [Jinja2](http://jinja.pocoo.org/docs/2.10/)								  | 2.10    |
+| EditorConfig																  | ----    |
+
+And their respective dependencies...
 
 ### Install python
-Download [Python 3.6.3](https://www.python.org/downloads/release/python-363/) and follow 
+Download [Python 3.6.3](https://www.python.org/downloads/release/python-363/) and follow
 the on screen instructions leaving all of the settings as default.
 
 ### Installing and setting up virtualenv and installing requirements
-We will be using a virtual environment to make things a bit easier.  Python 3 ships with 
-support for this (see: `python -m venv -h`), but we are using 
-[virtualenvwrapper-win](https://pypi.python.org/pypi/virtualenvwrapper-win) rather than 
+We will be using a virtual environment to make things a bit easier.  Python 3 ships with
+support for this (see: `python -m venv -h`), but we are using
+[virtualenvwrapper-win](https://pypi.python.org/pypi/virtualenvwrapper-win) rather than
 directly using the venv package.
 
 
-**_The following steps assume you have cloned the repo using your preferred method of git 
+**_The following steps assume you have cloned the repo using your preferred method of git
 and navigated to the directory that it is located in_**
 
 ``` bash
-#install virtualenvwrapper-win using pip
+# install virtualenvwrapper-win using pip
 pip install virtualenvwrapper-win
 
-#make a new virtual environment
+# make a new virtual environment
 mkvirtualenv --python=C:\\path\\to\\python3.6\\python.exe -a C:\\path\\to\\ppa-2-sw-testing-qa-spring-2018-team-1 -r requirements.txt ppa-2
 
 ```
 
-All of the requirements to run this project will be installed when you create the new virtual 
+All of the requirements to run this project will be installed when you create the new virtual
 environment using requirements.txt
 
 The virtual environment will automatically activate when you create it.
 
 ### Reference commands:
 ``` bash
-#activate the virtualenv
-workon ppa-1
+# activate the virtualenv
+# can be done anywher on the systems
+# it will take you to the correct directory
+workon ppa-2
 
-#updating requirements
+# updating requirements
 pip install -r requirements.txt
 
-#leave the virtualenv
+# leave the virtualenv
 deactivate
 ```
 
@@ -65,8 +73,8 @@ Use the following command to run the test suite and generate a coverage report:
 
 ``` bash
 # in the project root:
-pytest --pyargs app
+pytest --pyargs app --pylama --cov=app tests/
 ```
 
-pytest will automatically discover all tests that follow their naming convention 
+pytest will automatically discover all tests that follow their naming convention
 (see [here](https://docs.pytest.org/en/latest/goodpractices.html#test-discovery)).
