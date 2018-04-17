@@ -6,7 +6,7 @@ install:
 before_script:
   - git clone https://github.com/drbyron-github-classroom/ppa-2-sw-testing-qa-spring-2018-team-1
 script:
-  - pytest
+  - pytest --pyargs app
 after_success:
   - wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
@@ -16,6 +16,3 @@ after_failure:
   - wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
   - ./send.sh failure $WEBHOOK_URL
-
-notifications:
-  webhooks: https://coveralls.io/webhook?repo_token=T6ReMfj8J6FLem5tcvi8qxiVuoft9vI0J
