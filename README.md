@@ -21,7 +21,7 @@ We are going to be working with:
 | [python-coveralls](https://pypi.org/project/python-coveralls/)			  | 2.9.1   |
 | [Flask](http://flask.pocoo.org/)											  | 0.12.2  |
 | [Jinja2](http://jinja.pocoo.org/docs/2.10/)								  | 2.10    |
-| EditorConfig																  | ----    |
+| [EditorConfig](http://editorconfig.org/)									  | ----    |
 
 And their respective dependencies...
 
