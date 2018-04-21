@@ -22,5 +22,5 @@ deploy:
 notifications:
   email: false
 before_install:
-- openssl aes-256-cbc -K $encrypted_0716dadb053a_key -iv $encrypted_0716dadb053a_iv
+- openssl aes-256-cbc -K $encrypted_081c528cdb76_key -iv $encrypted_081c528cdb76_iv
   -in client-secret.json.enc -out client-secret.json -d
