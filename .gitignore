@@ -103,3 +103,5 @@ ENV/
 \.pytest_cache/v/cache/
 
 \.pytest_cache/v/pylama/
+
+client-secret\.json
