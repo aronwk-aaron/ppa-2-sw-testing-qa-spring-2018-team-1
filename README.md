@@ -21,6 +21,7 @@ We are going to be working with:
 | [python-coveralls](https://pypi.org/project/python-coveralls/)			  | 2.9.1   |
 | [Flask](http://flask.pocoo.org/)											  | 0.12.2  |
 | [Jinja2](http://jinja.pocoo.org/docs/2.10/)								  | 2.10    |
+| [Selenium](http://selenium-python.readthedocs.io/index.html)				  | 3.11.0  |
 | [EditorConfig](http://editorconfig.org/)									  | ----    |
 
 And their respective dependencies...
@@ -56,12 +57,13 @@ The virtual environment will automatically activate when you create it.
 ### Reference commands:
 ``` bash
 # activate the virtualenv
-# can be done anywher on the systems
-# it will take you to the correct directory
+# can be done anywhere on the system
+# it will take you to the working directory of the project
 workon ppa-2
 
 # updating requirements
 pip install -r requirements.txt
+pip install -e .
 
 # leave the virtualenv
 deactivate
@@ -69,7 +71,7 @@ deactivate
 
 ### Running Tests
 
-Use the following command to run the test suite and generate a coverage report:
+Use the following command to run the test suite and style checker and generate a coverage report:
 
 ``` bash
 # in the project root:
@@ -78,3 +80,46 @@ pytest --pyargs app --pylama --cov=app tests/
 
 pytest will automatically discover all tests that follow their naming convention
 (see [here](https://docs.pytest.org/en/latest/goodpractices.html#test-discovery)).
+
+### Running Flask locally
+
+To run flask locally, use the following command:
+
+``` bash
+# start flask app
+python wsgi.py
+```
+
+This will start the flask app on you computer on port `5000`.
+To view it, go to [http:\\localhost:5000](http:\\localhost:5000)
+
+## Configuration files
+
+### `.coveragerc`
+
+Used to configure pytest-cov.
+
+### `.editorconfig`
+
+We're using editorconfig to make sure that everyone's editor is configured to handle line endings, tabs vs. spaces, etc. properly so that everything can be consistent. Please be sure to install the plug-in for whatever editor you're using before editing and committing anything.
+
+### `.travis.yml`
+
+Used to configure Travis-CI for running test, deploying to the staging server, calling coveralls, and sending Discord webhooks.
+
+### `app.yaml`
+
+Used to configure the Google App Engine for automated deployment.
+This uses gunicorn to start the flask app defined by `wsgi:app` which is the app run by `wsgi.py`
+
+### `pylama.ini`
+
+Used to configure pylama.
+
+### `setup.py`
+
+Used to define the custom module so that pytest can import them easier.
+
+### `wspi.py`
+
+Used by gnuicorn to start the flask app.
