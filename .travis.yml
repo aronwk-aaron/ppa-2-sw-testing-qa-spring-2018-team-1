@@ -1,9 +1,6 @@
 language: python
 python:
 - '3.6'
-before_install:
-- openssl aes-256-cbc -K $encrypted_0716dadb053a_key -iv $encrypted_0716dadb053a_iv
-  -in client-secret.json.enc -out client-secret.json -d
 install:
 - pip install -r requirements.txt
 - pip install -e .
@@ -24,3 +21,6 @@ deploy:
   project: ppa-2-team-1
 notifications:
   email: false
+before_install:
+- openssl aes-256-cbc -K $encrypted_0716dadb053a_key -iv $encrypted_0716dadb053a_iv
+  -in client-secret.json.enc -out client-secret.json -d
