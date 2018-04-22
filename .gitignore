@@ -107,3 +107,5 @@ ENV/
 client-secret\.json
 
 \.coveralls\.yml
+
+2to3\.py
