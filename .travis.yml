@@ -24,3 +24,7 @@ notifications:
 before_install:
 - openssl aes-256-cbc -K $encrypted_081c528cdb76_key -iv $encrypted_081c528cdb76_iv
   -in client-secret.json.enc -out client-secret.json -d
+- google-chrome-stable --headless --disable-gpu --remote-debugging-port=5000 http://localhost &
+sudo: required
+addons:
+  chrome: stable

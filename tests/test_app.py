@@ -41,9 +41,9 @@ def test_dist_input(app):
 
 def test_dist_invalid(app):
     r = app.post('/distance', data={
-            'x1': 'dflbvg',
-            'y1': 'no',
-            'x2': '5',
-            'y2': '5'})
+        'x1': 'dflbvg',
+        'y1': 'no',
+        'x2': '5',
+        'y2': '5'})
     assert r.status_code == 200
     assert 'Invalid Input' in r.data.decode('utf-8')
