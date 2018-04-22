@@ -1,5 +1,7 @@
 import logging
 from flask import Flask, render_template, redirect, url_for, request, Blueprint
+from .forms import gen_dist_form
+from .distance import calc_distance
 
 main_blueprint = Blueprint('main', __name__)
 
@@ -19,10 +21,14 @@ def bmi():
 
 @main_blueprint.route('/distance', methods=['GET', 'POST'])
 def distance():
+    dist_form = gen_dist_form(request.form)
+
     if request.method == 'POST':
-        return 'Hello, distance post!'
+        distance = calc_distance(dist_form.x1.data, dist_form.y1.data, dist_form.x2.data, dist_form.y2.data)
+        print(distance)
+        return render_template('distance.html', form=dist_form, distance=distance, post=1)
     else:
-        return 'Hello, distance!'
+        return render_template('distance.html', form=dist_form, distance=0, post=0)
 
 
 @main_blueprint.route('/email', methods=['GET', 'POST'])
@@ -57,5 +63,5 @@ def page_not_found(e):
 @main_blueprint.errorhandler(500)
 def server_error(e):
     # Log the error and stacktrace.
-    logging.exception('Someone tried to do somehting they were not supposed to do!.')
+    logging.exception('Someone tried to do something they were not supposed to do!.')
     return render_template('index.html')
