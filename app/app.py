@@ -22,10 +22,8 @@ def bmi():
 @main_blueprint.route('/distance', methods=['GET', 'POST'])
 def distance():
     dist_form = gen_dist_form(request.form)
-
     if request.method == 'POST':
         distance = calc_distance(dist_form.x1.data, dist_form.y1.data, dist_form.x2.data, dist_form.y2.data)
-        print(distance)
         return render_template('distance.html', form=dist_form, distance=distance, post=1)
     else:
         return render_template('distance.html', form=dist_form, distance=0, post=0)
