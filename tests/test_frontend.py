@@ -17,7 +17,7 @@ class TestBase(LiveServerTestCase):
         return app
 
     def setUp(self):
-        self.driver = webdriver.PhantomJS()
+        self.driver = webdriver.Chrome()
         self.driver.get(self.get_server_url())
 
     def tearDown(self):
