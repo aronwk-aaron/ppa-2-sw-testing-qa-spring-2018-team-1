@@ -1,8 +1,8 @@
 import os
 from app import create_app
 
-config = os.getenv('PROJECT_SETTINGS') or 'development'
-app = create_app()
+config = 'dev'
+app = create_app(config_name=config)
 
 @app.shell_context_processor
 def make_shell_context():

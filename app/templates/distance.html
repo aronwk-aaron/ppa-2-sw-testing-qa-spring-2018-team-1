@@ -1,0 +1,59 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Distance{% endblock %}
+
+{% block content %}
+<div class="contianer">
+	<br>
+	<div class="card mx-5">
+		<div class="card-body text-center">
+			<h4 class="card-title ">Shortest Distance Calculator</h4>
+			<h6 class="card-subtitle mb-2 text-muted">Calculates the shortest dinstance between two points.</h6>
+			<p class="card-text">
+				<form method="post" action="{{ url_for('main.distance') }}">
+					{{form.csrf_token}}
+					<div class="row">
+						<div class="col-sm">
+							First Point
+						</div>
+						<div class="col-sm">
+							Second Point
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm">
+							{{ form.x1.label }}
+							{{ form.x1() }}
+						</div>
+						<div class="col-sm">
+							{{ form.x2.label }}
+							{{ form.x2() }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm">
+							{{ form.y1.label }}
+							{{ form.y1() }}
+						</div>
+						<div class="col-sm">
+							{{ form.y2.label }}
+							{{ form.y2() }}
+						</div>
+					</div>
+					<br>
+					<button type="submit" class="btn btn-dark">Submit</button>
+				</form>
+				<br>
+				{% if post %}
+					{% if distance %}
+						<h5>The shortest distance between your two points is:</h5>
+						{{ distance }}
+					{% else %}
+						Invalid Input
+					{% endif %}
+				{% endif %}
+			</p>
+		</div>
+	</div>
+</div>
+{% endblock %}
