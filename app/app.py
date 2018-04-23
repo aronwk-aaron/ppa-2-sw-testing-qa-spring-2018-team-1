@@ -1,7 +1,8 @@
 import logging
 from flask import Flask, render_template, redirect, url_for, request, Blueprint
-from .forms import gen_dist_form
+from .forms import gen_dist_form, gen_email_form
 from .distance import calc_distance
+from .email import verify_email
 
 main_blueprint = Blueprint('main', __name__)
 
@@ -31,8 +32,10 @@ def distance():
 
 @main_blueprint.route('/email', methods=['GET', 'POST'])
 def email():
+    email_form = gen_email_form(request.form)
     if request.method == 'POST':
-        return 'Hello, email post!'
+        email = verify_email(email_form.email_input)
+        return render_template('email.html', form=email_form, email=email, post=0)
     else:
         return 'Hello, email!'
 

@@ -39,3 +39,25 @@ def test_dist_invalid(app):
             'y2': '5'})
     assert r.status_code == 200
     assert 'Invalid Input' in r.data.decode('utf-8')
+
+
+def test_email_invalid(app):
+    r = app.post('/email', data={
+        'x1': 'hello',
+    })
+    assert r.status_code == 200
+    assert 'Invalid Input' in r.data.decode('utf-8')
+
+
+def test_email_valid(app):
+    r = app.post('/email', data={
+        'email_input': 'ajm712@msstate.edu'
+    })
+    assert r.status_code == 200
+    assert 'Valid Input' in r.data.decode('utf-8')
+
+
+def test_email_no_input(app):
+    r = app.get('/email')
+    assert r.status_code == 200
+    assert 'Email Verifier' in r.data.decode('utf-8')
