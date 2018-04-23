@@ -11,7 +11,6 @@
 			<h6 class="card-subtitle mb-2 text-muted">Calculates the shortest dinstance between two points.</h6>
 			<p class="card-text">
 				<form method="post" action="{{ url_for('main.distance') }}">
-					{{form.csrf_token}}
 					<div class="row">
 						<div class="col-sm">
 							First Point
