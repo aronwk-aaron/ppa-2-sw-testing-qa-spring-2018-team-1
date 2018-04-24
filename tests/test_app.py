@@ -39,3 +39,27 @@ def test_dist_invalid(app):
             'y2': '5'})
     assert r.status_code == 200
     assert 'Invalid Input' in r.data.decode('utf-8')
+
+
+def test_bmi_no_input(app):
+    r = app.get('/bmi')
+    assert r.status_code == 200
+    assert 'Body Mass Index Calculator' in r.data.decode('utf-8')
+
+
+def test_bmi_input(app):
+    r = app.post('/bmi', data={
+        'f': '5',
+        'i': '7',
+        'p': '150'})
+    assert r.status_code == 200
+    assert '24.1' in r.data.decode('utf-8')
+
+
+def test_bmi_invalid(app):
+    r = app.post('/bmi', data={
+        'f': '6',
+        'i': 'helloworld',
+        'p': '150'})
+    assert r.status_code == 200
+    assert 'Invalid Input' in r.data.decode('utf-8')
