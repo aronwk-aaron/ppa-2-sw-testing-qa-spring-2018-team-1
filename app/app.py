@@ -34,10 +34,10 @@ def distance():
 def email():
     email_form = gen_email_form(request.form)
     if request.method == 'POST':
-        email = verify_email(email_form.email_input)
-        return render_template('email.html', form=email_form, email=email, post=0)
+        email = verify_email(email_form.email_input.data)
+        return render_template('email.html', form=email_form, email=email, post=True)
     else:
-        return 'Hello, email!'
+        return render_template('email.html', form=email_form, email="", post=0)
 
 
 @main_blueprint.route('/retirement', methods=['GET', 'POST'])

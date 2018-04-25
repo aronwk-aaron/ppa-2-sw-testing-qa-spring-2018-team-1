@@ -10,9 +10,10 @@
 			<h4 class="card-title ">Email Verifier</h4>
 			<h6 class="card-subtitle mb-2 text-muted">Validates entered email address</h6>
 			<p class="card-text">
-				<form method="post" action="{{ url_for('main.email') }}">
-                    <input type = "text">{{ form.email_input() }}
-                        <br>Enter Email:</br>
+                <form method="post" action="{{ url_for('main.email') }}">
+                <br>Enter Email:</br>
+                    {{ form.email_input() }}
+
 					<br>
 					<button type="submit" class="btn btn-dark">Submit</button>
 				</form>
@@ -21,7 +22,7 @@
 					{% if email %}
 						<h5>Email is Validated</h5>
 					{% else %}
-						Invalid Input
+                        <h5>Invalid Input</h5>
 					{% endif %}
 				{% endif %}
 			</p>
