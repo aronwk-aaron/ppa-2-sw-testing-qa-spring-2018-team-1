@@ -1,0 +1,32 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Email{% endblock %}
+
+{% block content %}
+<div class="container">
+	<br>
+	<div class="card mx-5">
+		<div class="card-body text-center">
+			<h4 class="card-title ">Email Verifier</h4>
+			<h6 class="card-subtitle mb-2 text-muted">Validates entered email address</h6>
+			<p class="card-text">
+                <form method="post" action="{{ url_for('main.email') }}">
+                <br>Enter Email:</br>
+                    {{ form.email_input() }}
+
+					<br>
+					<button type="submit" class="btn btn-dark">Submit</button>
+				</form>
+				<br>
+				{% if post %}
+					{% if email %}
+						<h5>Email is Validated</h5>
+					{% else %}
+                        <h5>Invalid Input</h5>
+					{% endif %}
+				{% endif %}
+			</p>
+		</div>
+	</div>
+</div>
+{% endblock %}

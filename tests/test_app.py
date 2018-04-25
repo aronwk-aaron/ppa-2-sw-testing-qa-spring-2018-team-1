@@ -41,6 +41,18 @@ def test_dist_invalid(app):
     assert 'Invalid Input' in r.data.decode('utf-8')
 
 
+def test_email_invalid(app):
+    r = app.post('/email', data={'email_input': 'skjfslkf'})
+    assert r.status_code == 200
+    assert 'Invalid Input' in r.data.decode('utf-8')
+
+
+def test_email_valid(app):
+    r = app.post('/email', data={'email_input': 'ajm712@msstate.edu'})
+    assert r.status_code == 200
+    assert 'Email is Validated' in r.data.decode('utf-8')
+
+
 def test_bmi_no_input(app):
     r = app.get('/bmi')
     assert r.status_code == 200
