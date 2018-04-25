@@ -52,7 +52,7 @@ def test_email_valid(app):
     assert r.status_code == 200
     assert 'Email is Validated' in r.data.decode('utf-8')
 
-    
+
 def test_bmi_no_input(app):
     r = app.get('/bmi')
     assert r.status_code == 200
