@@ -1,7 +1,8 @@
 import logging
 from flask import Flask, render_template, redirect, url_for, request, Blueprint
-from .forms import gen_dist_form
+from .forms import gen_dist_form, gen_bmi_form
 from .distance import calc_distance
+from .bmi import calc_bmi
 
 main_blueprint = Blueprint('main', __name__)
 
@@ -13,10 +14,17 @@ def index():
 
 @main_blueprint.route('/bmi', methods=['GET', 'POST'])
 def bmi():
+    bmi_form = gen_bmi_form(request.form)
     if request.method == 'POST':
-        return 'Hello, bmi post!'
+
+        try:
+            bmi = calc_bmi(bmi_form.f.data, bmi_form.i.data, bmi_form.p.data)
+        except Exception:
+            bmi = -1
+
+        return render_template('bmi.html', form=bmi_form, bmi=bmi, post=1)
     else:
-        return 'Hello, bmi!'
+        return render_template('bmi.html', form=bmi_form, distance=0, post=0)
 
 
 @main_blueprint.route('/distance', methods=['GET', 'POST'])
