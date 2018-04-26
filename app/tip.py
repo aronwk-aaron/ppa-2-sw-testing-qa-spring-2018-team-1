@@ -1,48 +1,38 @@
 # Jahrell Harris netID: jah1254
 # Software Testing Q&A
-# Spliting Tip amount among guest is what this code's functionality is
-# It accepts only a float value as the tip amount and
+# Spliting bill amount among guest is what this code's functionality is
+# It accepts only a float value as the bill amount and
 # only an integer value as the guest amount
 # Retruns False when the conditions above are violated and
-# also when any value is 0 for either guest or tip
+# also when any value is 0 for either guest or bill
 # Function for splitting tips accepts (float,int)
 
 
-def split_tip(tip, guest_count):
+def split_tip(bill, guest_count):
 
     # Ensures that given input matches desired
     # input(input does not violate accepted data types)
     try:
-        float(tip)
-    except Exception:
-        return False
-    try:
-        int(guest_count)
+        bill = float(bill)
+        guest_count == int(guest_count)
     except Exception:
         return False
 
-    if (float(tip) == 0):
+    if ((bill == 0) or (guest_count == 0.0)):
         return False
 
-    if (int(guest_count) == 0):
-        return False
-
-    if (float(tip) == round(float(tip))):
-        return False
-
-    if ((float(guest_count)) != round(float(guest_count))):
-        return False
-
-    # If given valid input calculates tip values for each guest
+    # If given valid input calculates bill values for each guest
     # rounded to 2 decimal places
 
     guest_count = int(guest_count)
-    tip = float(tip)
-    tip_split_var = tip / guest_count
-    guest_array = [round(tip_split_var, 2)]
-    total = tip - guest_array[0]
+    bill *= 1.15
+
+    split = bill / guest_count
+    guest_array = [round(split, 2)]
+    total = bill - guest_array[0]
+
     for value in range(2, guest_count):
-        guest_array.append(round(tip_split_var, 2))
+        guest_array.append(round(split, 2))
         total = total - guest_array[value - 1]
     guest_array.append(round(total, 2))
 

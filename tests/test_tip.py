@@ -34,8 +34,8 @@ def test_zero_tip_and_string_guest():
 
 
 def test_float_tip_and_float_guest():
-    assert split_tip(15.16, 3.5) == False
+    assert split_tip(15.16, 3.5) == [5.81, 5.81, 5.81]
 
 
 def test_integer_tip_and_integer_guest():
-    assert split_tip(4, 4) == False
+    assert split_tip(4, 4) == [1.15, 1.15, 1.15, 1.15]

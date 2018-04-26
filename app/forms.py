@@ -28,5 +28,5 @@ class gen_retire_form(FlaskForm):
 
 
 class gen_tip_form(FlaskForm):
-    tip = FloatField('Tip Amount:', validators=[DataRequired()])
-    guest = IntegerField('Number of Guest:', validators=[DataRequired()])
+    bill = FloatField('Bill amount:', validators=[DataRequired()])
+    guests = IntegerField('Number of Guest:', validators=[DataRequired()])

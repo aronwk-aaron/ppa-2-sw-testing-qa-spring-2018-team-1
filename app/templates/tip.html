@@ -8,25 +8,17 @@
 	<div class="card mx-5">
 		<div class="card-body text-center">
 			<h4 class="card-title ">Split Tip Calculator</h4>
-			<h6 class="card-subtitle mb-2 text-muted">Calculates the tip amount amount guest.</h6>
+			<h6 class="card-subtitle mb-2 text-muted">Calculates what each guest need to pay given the bill amoutn and number of guests.</h6>
 			<p class="card-text">
 				<form method="post" action="{{ url_for('main.tip') }}">
 					<div class="row">
 						<div class="col-sm">
-							<!--Tip-->
+							{{ form.bill.label }}
+							{{ form.bill() }}
 						</div>
 						<div class="col-sm">
-							<!--Guest-->
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm">
-							{{ form.tip.label }}
-							{{ form.tip() }}
-						</div>
-						<div class="col-sm">
-							{{ form.guest.label }}
-							{{ form.guest() }}
+							{{ form.guests.label }}
+							{{ form.guests() }}
 						</div>
 					</div>
 					<br>
@@ -34,9 +26,11 @@
 				</form>
 				<br>
 				{% if post %}
-					{% if tip %}
-						<h5>The Tip amount is:</h5>
-						{{ tip }}
+					{% if bills %}
+						<h5>These are the bills for each guest.</h5>
+						{% for check in bills %}
+							<span class="font-weight-bold"> Guest {{check.guest}}:</span> ${{check.amount}}<br>
+						{% endfor %}
 					{% else %}
 						Invalid Input
 					{% endif %}

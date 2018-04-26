@@ -137,15 +137,15 @@ def test_tip_no_input(app):
 
 def test_tip_input(app):
     r = app.post('/tip', data={
-        'tip': '53.37',
-        'guest': '4'})
+        'bill': '100',
+        'guests': '6'})
     assert r.status_code == 200
-    assert '[13.34, 13.34, 13.34, 13.35]' in r.data.decode('utf-8')
+    assert '19.17' in r.data.decode('utf-8')
 
 
 def test_tip_invalid(app):
     r = app.post('/tip', data={
-        'tip': '6edfghj',
+        'bills': '6edfghj',
         'guest': 'goodbyeworld'})
     assert r.status_code == 200
     assert 'Invalid Input' in r.data.decode('utf-8')

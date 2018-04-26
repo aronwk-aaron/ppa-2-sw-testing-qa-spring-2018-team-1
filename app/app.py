@@ -65,7 +65,16 @@ def retirement():
 def tip():
     tip_form = gen_tip_form(request.form)
     if request.method == 'POST':
-        tip = split_tip(tip_form.tip.data, tip_form.guest.data)
-        return render_template('tip.html', form=tip_form, tip=tip, post=1)
+        bills = split_tip(tip_form.bill.data, tip_form.guests.data)
+
+        checks = list()
+        if bills != False:
+            guest = 1
+            for amount in bills:
+                temp_dict = dict({'guest': guest, 'amount': amount})
+                checks.append(temp_dict)
+                guest += 1
+
+        return render_template('tip.html', form=tip_form, bills=checks, post=1)
     else:
-        return render_template('tip.html', form=tip_form, tip=0, post=0)
+        return render_template('tip.html', form=tip_form, bills=0, post=0)
