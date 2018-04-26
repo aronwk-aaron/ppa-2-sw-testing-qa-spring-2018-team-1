@@ -1,11 +1,12 @@
 import logging
 from flask import Flask, render_template, redirect, url_for, request, Blueprint
-from .forms import gen_dist_form, gen_email_form, gen_bmi_form, gen_retire_form
+from .forms import gen_dist_form, gen_email_form, gen_bmi_form, gen_retire_form, gen_tip_form
 
 from .distance import calc_distance
 from .retirement import calc_retirement
 from .email import verify_email
 from .bmi import calc_bmi
+from .tip import split_tip
 
 main_blueprint = Blueprint('main', __name__)
 
@@ -62,7 +63,9 @@ def retirement():
 
 @main_blueprint.route('/tip', methods=['GET', 'POST'])
 def tip():
+    tip_form = gen_tip_form(request.form)
     if request.method == 'POST':
-        return 'Hello, tip post!'
+        tip = split_tip(tip_form.tip.data, tip_form.guest.data)
+        return render_template('tip.html', form=tip_form, tip=tip, post=1)
     else:
-        return 'Hello, tip!'
+        return render_template('tip.html', form=tip_form, tip=0, post=0)
