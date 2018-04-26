@@ -18,9 +18,10 @@ class DevelopmentConfig(Config):
 
 
 class ProductionConfig(Config):
-    import logging
-    log = logging.getLogger('werkzeug')
-    log.setLevel(logging.ERROR)
+    # import logging
+    # log = logging.getLogger('werkzeug')
+    # log.setLevel(logging.ERROR)
+    pass
 
 
 class TestingConfig(Config):

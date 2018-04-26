@@ -9,8 +9,29 @@
 		<div class="card-body text-center">
 			<h4 class="card-title ">Welcome to Professional Practice Assignment 2</h4>
 			<h6 class="card-subtitle mb-2 text-muted"> Presented by: Team 1</h6>
-			<p class="card-text">
-				Write info here
+			<p class="card-text px-5">
+				<div class="row">
+					<div class="col">
+						<h6>This web app features five simple functions:</h6>
+						<div class="btn-group-vertical text-center">
+							<a class="btn btn-dark" href="{{ url_for('main.bmi') }}">BMI Calculator</a>
+							<a class="btn btn-dark" href="{{ url_for('main.distance') }}">Distance Calculator</a>
+							<a class="btn btn-dark" href="{{ url_for('main.email') }}">Email Verifier</a>
+							<a class="btn btn-dark" href="{{ url_for('main.retirement') }}">Retirement Calculator</a>
+							<a class="btn btn-dark" href="{{ url_for('main.tip') }}">Split the Tip</a>
+						</div>
+					</div>
+					<div class="col">
+						<h6>This project is an exercise in developing a continuous pipeline</h6>
+						<div class="btn-group-vertical text-center">
+							<a href="https://github.com/drbyron-github-classroom/ppa-2-sw-testing-qa-spring-2018-team-1" class="btn btn-outline-dark"> Github Repo</a>
+							<a href="https://travis-ci.org/drbyron-github-classroom/ppa-2-sw-testing-qa-spring-2018-team-1" class="btn btn-warning"> Travic CI</a>
+							<a href="https://coveralls.io/github/drbyron-github-classroom/ppa-2-sw-testing-qa-spring-2018-team-1" class="btn btn-info"> Coveralls</a>
+							<a href="https://ppa-2-team-1.appspot.com/" class="btn btn-primary"> GAE Staging</a>
+							<a href="https://ppa-2-team-1-production.appspot.com/" class="btn btn-primary"> GAE Production</a>			
+						</div>
+					</div>
+				</div>
 			</p>
 		</div>
 	</div>
