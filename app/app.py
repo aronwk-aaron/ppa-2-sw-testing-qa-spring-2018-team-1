@@ -66,15 +66,3 @@ def tip():
         return 'Hello, tip post!'
     else:
         return 'Hello, tip!'
-
-
-@main_blueprint.errorhandler(404)
-def page_not_found(e):
-    return redirect(url_for('index'))
-
-
-@main_blueprint.errorhandler(500)
-def server_error(e):
-    # Log the error and stacktrace.
-    logging.exception('Someone tried to do something they were not supposed to do!.')
-    return render_template('index.html')

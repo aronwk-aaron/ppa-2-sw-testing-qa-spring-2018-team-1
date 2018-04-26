@@ -85,29 +85,29 @@ def test_retire_no_input(app):
 
 def test_retire_input(app):
     r = app.post('/retirement', data={
-        'Current age': '23',
-        'Annual salary': '60000.00',
-        'Percent saved': '10',
-        'Savings goal': '100000'})
+        'age': '23',
+        'salary': '60000.00',
+        'percent': '10',
+        'goal': '100000'})
     assert r.status_code == 200
     assert "You will meet your savings goal at age 35" in r.data.decode('utf-8')
 
 
 def test_retire_input_unreached_goal(app):
     r = app.post('/retirement', data={
-        'Current age': '23',
-        'Annual salary': '60000.00',
-        'Percent saved': '10',
-        'Savings goal': '1000000'})
+        'age': '23',
+        'salary': '60000.00',
+        'percent': '10',
+        'goal': '10000000'})
     assert r.status_code == 200
-    assert "Sorry, your goal won't be met." in r.data.decode('utf-8')
+    assert "Sorry, your goal" in r.data.decode('utf-8')
 
 
 def test_retire_invalid(app):
     r = app.post('/retirement', data={
-        'Current age': '2d3',
-        'Annual salary': '6000sdf0.00',
-        'Percent saved': '10sdfs',
-        'Savings goal': '100000df'})
+        'age': '2d3',
+        'salary': '6000sdf0.00',
+        'percent': '10sdfs',
+        'goal': '100000df'})
     assert r.status_code == 200
     assert "Invalid Input" in r.data.decode('utf-8')
