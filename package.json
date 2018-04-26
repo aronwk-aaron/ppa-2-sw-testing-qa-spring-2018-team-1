@@ -1,0 +1,32 @@
+{
+  "name": "ppa-2-sw-testing-qa-spring-2018-team-1",
+  "version": "1.0.0",
+  "description": "Cypress testing",
+  "main": "index.js",
+  "directories": {
+    "test": "cypress"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "cypress": "^2.1.0"
+  },
+  "scripts": {
+    "test": "npm run cypress open",
+    "cypress:open": "cypress open",
+    "cypress:run" : "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drbyron-github-classroom/ppa-2-sw-testing-qa-spring-2018-team-1.git"
+  },
+  "keywords": [
+    "cypress",
+    "testing"
+  ],
+  "author": "Team1",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/drbyron-github-classroom/ppa-2-sw-testing-qa-spring-2018-team-1/issues"
+  },
+  "homepage": "https://github.com/drbyron-github-classroom/ppa-2-sw-testing-qa-spring-2018-team-1#readme"
+}
