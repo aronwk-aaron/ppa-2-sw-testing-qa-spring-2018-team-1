@@ -126,3 +126,26 @@ def test_retire_invalid(app):
         'goal': '100000df'})
     assert r.status_code == 200
     assert "Invalid Input" in r.data.decode('utf-8')
+
+
+# tip
+def test_tip_no_input(app):
+    r = app.get('/tip')
+    assert r.status_code == 200
+    assert 'Split Tip Calculator' in r.data.decode('utf-8')
+
+
+def test_tip_input(app):
+    r = app.post('/tip', data={
+        'tip': '53.37',
+        'guest': '4'})
+    assert r.status_code == 200
+    assert '[13.34, 13.34, 13.34, 13.35]' in r.data.decode('utf-8')
+
+
+def test_tip_invalid(app):
+    r = app.post('/tip', data={
+        'tip': '6edfghj',
+        'guest': 'goodbyeworld'})
+    assert r.status_code == 200
+    assert 'Invalid Input' in r.data.decode('utf-8')
