@@ -85,3 +85,22 @@ describe('Testing Retirement Savings', function() {
 
   })
 })
+
+describe('Testing Split the Tip', function() {
+  it('Calculates what each guest need to pay given the bill amoutn and number of guests', function(){
+    cy.visit('/tip')
+
+    cy.get('input#bill')
+      .type('23')
+
+    cy.get('input#guests')
+      .type('60000')
+
+    cy.contains("Submit")
+      .click()
+
+    cy.get('h5')
+      .should('contain', 'These are the bills for each guest.')
+
+  })
+})
