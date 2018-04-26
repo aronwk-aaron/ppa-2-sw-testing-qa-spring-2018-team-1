@@ -1,0 +1,42 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Tip{% endblock %}
+
+{% block content %}
+<div class="container">
+	<br>
+	<div class="card mx-5">
+		<div class="card-body text-center">
+			<h4 class="card-title ">Split Tip Calculator</h4>
+			<h6 class="card-subtitle mb-2 text-muted">Calculates what each guest need to pay given the bill amoutn and number of guests.</h6>
+			<p class="card-text">
+				<form method="post" action="{{ url_for('main.tip') }}">
+					<div class="row">
+						<div class="col-sm">
+							{{ form.bill.label }}
+							{{ form.bill() }}
+						</div>
+						<div class="col-sm">
+							{{ form.guests.label }}
+							{{ form.guests() }}
+						</div>
+					</div>
+					<br>
+					<button type="submit" class="btn btn-dark">Submit</button>
+				</form>
+				<br>
+				{% if post %}
+					{% if bills %}
+						<h5>These are the bills for each guest.</h5>
+						{% for check in bills %}
+							<span class="font-weight-bold"> Guest {{check.guest}}:</span> ${{check.amount}}<br>
+						{% endfor %}
+					{% else %}
+						Invalid Input
+					{% endif %}
+				{% endif %}
+			</p>
+		</div>
+	</div>
+</div>
+{% endblock %}
