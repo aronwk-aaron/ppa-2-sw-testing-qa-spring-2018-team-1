@@ -9,7 +9,7 @@ install:
 - npm install
 script:
 - pytest --pyargs app --pylama --cov=app tests/
-- ptyhon wsgi.py &
+- python wsgi.py &
 - npm run cypress:run
 after_success:
 - wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
