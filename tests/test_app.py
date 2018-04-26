@@ -9,12 +9,14 @@ def app():
     return app.test_client()
 
 
+# index
 def test_index(app):
     r = app.get('/')
     assert r.status_code == 200
     assert 'Index' in r.data.decode('utf-8')
 
 
+# distance
 def test_dist_no_input(app):
     r = app.get('/distance')
     assert r.status_code == 200
@@ -41,18 +43,30 @@ def test_dist_invalid(app):
     assert 'Invalid Input' in r.data.decode('utf-8')
 
 
+# email
+def test_email_no_input(app):
+    r = app.get('/email')
+    assert r.status_code == 200
+    assert 'Email Verifier' in r.data.decode('utf-8')
+
+
 def test_email_invalid(app):
-    r = app.post('/email', data={'email_input': 'skjfslkf'})
+    r = app.post('/email', data={
+        'email_input': 'skjfslkf'
+        })
     assert r.status_code == 200
     assert 'Invalid Input' in r.data.decode('utf-8')
 
 
 def test_email_valid(app):
-    r = app.post('/email', data={'email_input': 'ajm712@msstate.edu'})
+    r = app.post('/email', data={
+        'email_input': 'ajm712@msstate.edu'
+        })
     assert r.status_code == 200
     assert 'Email is Validated' in r.data.decode('utf-8')
 
 
+# bmi
 def test_bmi_no_input(app):
     r = app.get('/bmi')
     assert r.status_code == 200
@@ -77,6 +91,7 @@ def test_bmi_invalid(app):
     assert 'Invalid Input' in r.data.decode('utf-8')
 
 
+# retirement
 def test_retire_no_input(app):
     r = app.get('/retirement')
     assert r.status_code == 200
