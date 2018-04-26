@@ -1,8 +1,9 @@
 import logging
 from flask import Flask, render_template, redirect, url_for, request, Blueprint
+from .forms import gen_dist_form, gen_email_form, gen_bmi_form, gen_retire_form
 
-from .forms import gen_dist_form, gen_email_form, gen_bmi_form
 from .distance import calc_distance
+from .retirement import calc_retirement
 from .email import verify_email
 from .bmi import calc_bmi
 
@@ -51,10 +52,12 @@ def email():
 
 @main_blueprint.route('/retirement', methods=['GET', 'POST'])
 def retirement():
+    retire_form = gen_retire_form(request.form)
     if request.method == 'POST':
-        return 'Hello, retirement post!'
+        age = calc_retirement(retire_form.age.data, retire_form.salary.data, retire_form.percent.data, retire_form.goal.data)
+        return render_template('retirement.html', form=retire_form, age=age, post=1)
     else:
-        return 'Hello, retirement!'
+        return render_template('retirement.html', form=retire_form, age=0, post=0)
 
 
 @main_blueprint.route('/tip', methods=['GET', 'POST'])

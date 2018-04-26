@@ -1,0 +1,49 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Retirement{% endblock %}
+
+{% block content %}
+<div class="contianer">
+	<br>
+	<div class="card mx-5">
+		<div class="card-body text-center">
+			<h4 class="card-title ">Retirement Age Calculator</h4>
+			<h6 class="card-subtitle mb-2 text-muted">Calculates the age at which a retirment savings goal will be met.</h6>
+			<p class="card-text">
+				<form method="post" action="{{ url_for('main.retirement') }}">
+					<div class="row">
+						<div class="col-sm">
+							{{ form.age.label }}
+							{{ form.age() }}
+						</div>
+						<div class="col-sm">
+							{{ form.salary.label }}
+							{{ form.salary() }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm">
+							{{ form.percent.label }}
+							{{ form.percent() }}
+						</div>
+						<div class="col-sm">
+							{{ form.goal.label }}
+							{{ form.goal() }}
+						</div>
+					</div>
+					<br>
+					<button type="submit" class="btn btn-dark">Submit</button>
+				</form>
+				<br>
+				{% if post %}
+					{% if age %}
+						<h5>{{ age }}</h5>
+					{% else %}
+						Invalid Input
+					{% endif %}
+				{% endif %}
+			</p>
+		</div>
+	</div>
+</div>
+{% endblock %}
