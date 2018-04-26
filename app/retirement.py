@@ -6,7 +6,7 @@
 # and outputs what age savings goal will be met
 
 
-def retirement(age, salary, percent, goal):
+def calc_retirement(age, salary, percent, goal):
 
     # cast each variable as its proper data type
     try:

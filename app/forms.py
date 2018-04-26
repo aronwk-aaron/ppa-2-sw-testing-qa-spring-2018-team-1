@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import IntegerField, StringField
+from wtforms import IntegerField, FloatField, StringField
 from wtforms.validators import DataRequired
 
 
@@ -18,3 +18,10 @@ class gen_bmi_form(FlaskForm):
     f = IntegerField('Feet:', validators=[DataRequired()])
     i = IntegerField('Inches:', validators=[DataRequired()])
     p = IntegerField('Pounds:', validators=[DataRequired()])
+
+
+class gen_retire_form(FlaskForm):
+    age = IntegerField('Current age:', validators=[DataRequired()])
+    salary = FloatField('Annual salary:', validators=[DataRequired()])
+    percent = FloatField('Percent saved:', validators=[DataRequired()])
+    goal = FloatField('Savings goal:', validators=[DataRequired()])
