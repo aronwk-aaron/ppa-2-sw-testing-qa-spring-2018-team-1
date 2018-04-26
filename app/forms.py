@@ -25,8 +25,3 @@ class gen_retire_form(FlaskForm):
     salary = FloatField('Annual salary:', validators=[DataRequired()])
     percent = FloatField('Percent saved:', validators=[DataRequired()])
     goal = FloatField('Savings goal:', validators=[DataRequired()])
-
-
-class gen_tip_form(FlaskForm):
-    tip = FloatField('Tip Amount:', validators=[DataRequired()])
-    guest = IntegerField('Number of Guest:', validators=[DataRequired()])

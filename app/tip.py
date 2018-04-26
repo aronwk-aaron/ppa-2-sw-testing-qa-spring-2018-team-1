@@ -21,16 +21,10 @@ def split_tip(tip, guest_count):
     except Exception:
         return False
 
-    if (float(tip) == 0):
-        return False
-
-    if (int(guest_count) == 0):
-        return False
-
-    if (float(tip) == round(float(tip))):
-        return False
-
-    if ((float(guest_count)) != round(float(guest_count))):
+    if (((float(tip) == 0)
+            or (int(guest_count) == 0))
+            or (float(tip) == round(float(tip)))
+            or ((float(guest_count)) != round(float(guest_count)))):
         return False
 
     # If given valid input calculates tip values for each guest
