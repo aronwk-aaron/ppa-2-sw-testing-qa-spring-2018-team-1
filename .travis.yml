@@ -1,11 +1,16 @@
 language: python
 python:
 - '3.6'
+node:
+- '6.14'
 install:
-- pip install -r requirements.txt
-- pip install -e .
+- pip3 install -r requirements.txt
+- pip3 install -e .
+- npm install
 script:
 - pytest --pyargs app --pylama --cov=app tests/
+- python wsgi.py &
+- npm run cypress:run
 after_success:
 - wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
 - chmod +x send.sh
@@ -24,3 +29,7 @@ notifications:
 before_install:
 - openssl aes-256-cbc -K $encrypted_081c528cdb76_key -iv $encrypted_081c528cdb76_iv
   -in client-secret.json.enc -out client-secret.json -d
+cache:
+  directories:
+    - ~/.npm
+    - node_modules
