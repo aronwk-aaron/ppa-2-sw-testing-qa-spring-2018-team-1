@@ -22,10 +22,7 @@ def calc_bmi(f, i, p):
 
     if feet > 10:
         raise ValueError
-
-
-
-
+        
     if inches > 11:
         raise ValueError
 

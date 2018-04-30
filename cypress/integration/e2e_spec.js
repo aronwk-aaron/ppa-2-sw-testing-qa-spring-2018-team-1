@@ -18,7 +18,7 @@ describe('Testing Distance', function() {
       .click()
 
     cy.get('h5')
-      .should('contain', 'blah')
+      .should('contain', 'The shortest distance between your two points is:')
 
   })
 })
