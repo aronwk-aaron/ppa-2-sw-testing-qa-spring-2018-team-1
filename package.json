@@ -11,9 +11,9 @@
     "cypress": "^2.1.0"
   },
   "scripts": {
-    "test": "npm run cypress open",
+    "test": "npm run cypress:run",
     "cypress:open": "cypress open",
-    "cypress:run" : "cypress run"
+    "cypress:run": "cypress run"
   },
   "repository": {
     "type": "git",

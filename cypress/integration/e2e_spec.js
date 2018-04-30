@@ -18,7 +18,7 @@ describe('Testing Distance', function() {
       .click()
 
     cy.get('h5')
-      .should('contain', 'The shortest distance between your two points is:')
+      .should('contain', 'blah')
 
   })
 })
@@ -91,10 +91,10 @@ describe('Testing Split the Tip', function() {
     cy.visit('/tip')
 
     cy.get('input#bill')
-      .type('23')
+      .type('6000')
 
     cy.get('input#guests')
-      .type('60000')
+      .type('15')
 
     cy.contains("Submit")
       .click()

@@ -25,7 +25,7 @@ def test_dist_no_input(app):
 
 def test_dist_input(app):
     r = app.post('/distance', data={
-        'x1': '0',
+        'x1': '5',
         'y1': '0',
         'x2': '5',
         'y2': '5'})

@@ -10,7 +10,7 @@ install:
 script:
 - pytest --pyargs app --pylama --cov=app tests/
 - python wsgi.py &
-- npm run cypress:run
+- npm test
 after_success:
 - wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
 - chmod +x send.sh
