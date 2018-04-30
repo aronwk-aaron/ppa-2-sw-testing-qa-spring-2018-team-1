@@ -109,7 +109,7 @@ To view it, go to [http:\\localhost:5000](http:\\localhost:5000)
 ### End-to-end Testing with Cypress
 
 For our end-to-end tests, we are using Cypress.
-To Use cypress, make sure you have `Node` and `npm` installed.
+To Use Cypress, make sure you have `Node` and `npm` installed.
 Then run the command `npm install` in the root of the repo to install Cypress and it's dependencies.
 
 There are two modes of operation for Cypress, headed and headless:
@@ -145,7 +145,7 @@ This is the enccrypted keyfile that Travis uses to deploy to Google App Engine.
 
 ### `config.py`
 
-This is our flask configuration file, it contains several different configurations for development and produciton.
+This is our flask configuration file, it contains several different configurations for development and production.
 
 ### `cypress.json`
 
@@ -163,8 +163,8 @@ Used to configure pylama.
 
 ### `requirements.txt`
 
-Requirement file for python, lets us install all fo our dependencies quickly and easily.
-Travis and Google App Engine use this to install python dependiences on them.
+Requirement file for python, lets us install all of our dependencies quickly and easily.
+Travis and Google App Engine use this to install python dependencies on them.
 
 ### `setup.py`
 
