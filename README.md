@@ -141,7 +141,7 @@ This uses gunicorn to start the flask app defined by `wsgi:app` which is the app
 
 ### `client-secret.json.enc`
 
-This is the enccrypted keyfile that Travis uses to deploy to Google App Engine.
+This is the encrypted keyfile that Travis uses to deploy to Google App Engine.
 
 ### `config.py`
 
@@ -172,4 +172,4 @@ Used to define the custom module so that pytest can import them easier.
 
 ### `wspi.py`
 
-Used by gnuicorn to start the flask app.
+Used by gunicorn to start the flask app.
